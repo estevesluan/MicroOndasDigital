@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Micro-ondas";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/MicroOndas.js"></script>
+<script type="text/javascript" src="~/Scripts/ProgramaAquecimento.js"></script>
+
+<form class="form-horizontal" style="padding: 2em;">
+    <input type="hidden" id="codigo-micro-ondas" value="@ViewBag.codigo">
+    <div class="form-group">
+        <label class="col-sm-1 control-label">Conteúdo</label>
+        <div class="col-sm-11">
+            <textarea class="form-control" rows="10" maxlength="256" id="textarea-conteudo-micro-ondas" placeholder="Adicione o conteúdo" style="resize:none;max-width: none!important;"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-1 control-label">Programas </label>
+        <div class="col-sm-3">
+            <select class="form-control" id="select-programas">
+                <option value=""> Selecione</option>
+                @foreach (var item in ViewBag.Programas)
+                {
+                    <option value="@item._Nome"> @item._Nome</option>
+                }
+            </select>
+        </div>
+
+        <label class="col-sm-1 control-label">Potência</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="input-potencia" placeholder="Potência">
+        </div>
+
+        <label class="col-sm-1 control-label">Tempo</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="input-tempo" placeholder="Tempo em segundos">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-1 control-label">Ações</label>
+        <div class="col-sm-11">
+            <button type="button" class="btn btn-default" id="button-iniciar">Iniciar</button>
+            <button type="button" class="btn btn-default" id="button-iniciar-rapido">Início Rápido</button>
+            <button type="button" class="btn btn-default" id="button-pausa">Pausar</button>
+            <button type="button" class="btn btn-default" id="button-cancelar">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="button-modal-programas">Pesquisar Programa</button>
+            <button type="button" class="btn btn-primary" id="button-programa-novo">Novo Programa</button>
+        </div>
+    </div>
+</form>
+
+<!-- Modal Programa Pesquisa-->
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-programas-aquecimento">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="div-pesquisa">
+                <div class="form-group">
+
+                    <label class="col-sm-1">Alimento</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="input-pesquisa-alimento" placeholder="Alimento">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-default" id="button-programa-pesquisa">Pesquisar</button>
+                    </div>
+
+                </div>
+            </div>
+            <div id="div-programas-painel">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Programa Novo-->
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-programa-novo">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="div-programa-novo">
+
+            </div>
+        </div>
+    </div>
+</div>

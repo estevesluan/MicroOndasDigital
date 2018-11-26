@@ -1,0 +1,27 @@
+﻿@using MO.Models
+@model IEnumerable<MO.Models.ProgramaAquecimento>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Instruções</th>
+            <th>Potência</th>
+            <th>Tempo</th>
+            <th>Alimentos</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ProgramaAquecimento item in Model.ToList())
+        {
+            <tr>
+                <td title="@item._Nome">@item._Nome</td>
+                <td title="@item._Instrucoes">@item._Instrucoes</td>
+                <td title="@item._Potencia">@item._Potencia</td>
+                <td title="@item._Tempo">@item._Tempo</td>
+                <td title="@item._Tempo">@(string.Join(",",item._Alimentos.Select(x => x._Nome)))</td>
+            </tr>
+        }
+    </tbody>
+</table>
