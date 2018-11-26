@@ -155,7 +155,6 @@
     <Compile Include="Interfaces\IProgramaAquecimento.cs" />
     <Compile Include="Interfaces\IMicroOndas.cs" />
     <Compile Include="Models\Alimento.cs" />
-    <Compile Include="Models\Arquivo.cs" />
     <Compile Include="Models\MicroOndas.cs" />
     <Compile Include="Models\ProgramaAquecimento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -36,7 +36,7 @@ namespace MO.Models
 
             set
             {
-                //Somente get
+                //Não possui set
             }
         }
         public TimeSpan _TempoMinimo
@@ -312,12 +312,16 @@ namespace MO.Models
 
         public void Pausar()
         {
-            this._Pausado = true;
+            //Somente quando está em execução
+            if(this._Tempo.TotalSeconds > 0)
+                this._Pausado = true;
         }
 
         public void Cancelar()
         {
-            this._Cancelado = true;
+            //Somente quando está em execução
+            if (this._Tempo.TotalSeconds > 0)
+                this._Cancelado = true;
         }
     }
 }

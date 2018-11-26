@@ -1,5 +1,6 @@
 ﻿$(function () {
     $("#button-iniciar").click(function () {
+        desabilitarPausaECancelar(false);
 
         var caminho = "MicroOndas/";
         var data = {};
@@ -28,17 +29,21 @@
                 $("#textarea-conteudo-micro-ondas").val(data.conteudo);
                 if(data.terminou)
                     alert("Aquecimento concluído");
+                    desabilitarPausaECancelar(true);
             } else {
                 alert(data.erro);
+                desabilitarPausaECancelar(true);
             }
         })
         .fail(function (data) {
             alert("Erro ao realizar o aquecimento");
+            desabilitarPausaECancelar(true);
         });
         
     });
 
     $("#button-iniciar-rapido").click(function () {
+        desabilitarPausaECancelar(false);
 
         var conteudo = $("#textarea-conteudo-micro-ondas").val();
         var codigo = $("#codigo-micro-ondas").val();
@@ -54,12 +59,15 @@
                 $("#textarea-conteudo-micro-ondas").val(data.conteudo);
                 if (data.terminou)
                     alert("Aquecimento concluído");
+                    desabilitarPausaECancelar(true);
             }else {
                 alert(data.erro);
+                desabilitarPausaECancelar(true);
             }
         })
         .fail(function (data) {
             alert("Erro ao realizar o aquecimento");
+            desabilitarPausaECancelar(true);
         });
     });
 
@@ -108,3 +116,8 @@
         });
     });
 });
+
+function desabilitarPausaECancelar(valor) {
+    $("#button-pausa").prop('disabled', valor);
+    $("#button-cancelar").prop('disabled', valor);
+}
